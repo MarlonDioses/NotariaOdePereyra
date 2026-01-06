@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notaría - Tarjeta Digital</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Menú Hamburguesa -->
+    <button class="hamburger-btn" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Menú lateral -->
+    <div class="side-menu" id="sideMenu">
+      <div class="menu-header">
+        <h3>Menú</h3>
+        <button class="close-menu" onclick="toggleMenu()">✕</button>
+      </div>
+      <div class="menu-content">
+        <button class="menu-item" onclick="promptInstall(); toggleMenu();">
+          📥 Descargar App
+        </button>
+        <button class="menu-item logout" onclick="logout()">
+          🚪 Cerrar Sesión
+        </button>
+      </div>
+    </div>
+
+    <!-- Overlay para cerrar menú -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+    <!-- Página Principal -->
+    <div class="page active" id="home">
+      <div class="header">
+        <div class="logo-container">
+          <img src="imagenes/dra.jpg" alt="Logo Notaría Ode" class="logo" />
+        </div>
+        <h1>Notaría Sofia Ode</h1>
+        <p class="subtitle">Notaria Sofia Ode Pereyra</p>
+
+        <!-- Redes Sociales en Header -->
+        <div class="social-icons-header">
+          <a
+            href="https://www.facebook.com/p/NOTAR%25C3%258DA-SOF%25C3%258DA-ODE-PEREYRA-100039202579073/?locale=es_LA"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            title="Facebook"
+          >
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/notariasofiaode/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            title="Instagram"
+          >
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://wa.me/51912911449"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon"
+            title="WhatsApp"
+          >
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="description">
+          <h2>Servicios Notariales Profesionales</h2>
+          <p>
+            Brindamos servicios notariales con más de 30 años de experiencia,
+            garantizando seguridad jurídica y atención personalizada en todos
+            nuestros trámites.
+          </p>
+        </div>
+
+        <!-- Botones de Áreas -->
+        <div class="areas-buttons">
+          <h3>Nuestras Áreas</h3>
+          <button class="area-btn area-legal" data-area="legal">
+            <span>⚖️</span> Área Legal
+          </button>
+          <button class="area-btn area-extra" data-area="extra">
+            <span>📋</span> Área Extra Protocolar
+          </button>
+          <button class="area-btn area-escritura" data-area="escritura">
+            <span>✍️</span> Área de Escrituración
+          </button>
+        </div>
+      </div>
+
+      <!-- Menú de navegación -->
+      <nav class="bottom-nav">
+        <button class="nav-btn active" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página de Servicios -->
+    <div class="page" id="services">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('home')">←</button>
+        <h2>Nuestros Servicios</h2>
+      </div>
+      <div class="content">
+        <div class="service-card" onclick="showRequirements('escrituras')">
+          <h3>✍️ Escrituras Públicas</h3>
+          <p>Compraventa, donación, hipotecas y más.</p>
+          <span class="ver-requisitos">Ver requisitos →</span>
+        </div>
+        <div class="service-card" onclick="showRequirements('poderes')">
+          <h3>📄 Poderes y Testamentos</h3>
+          <p>Redacción y legalización de documentos.</p>
+          <span class="ver-requisitos">Ver requisitos →</span>
+        </div>
+        <div class="service-card" onclick="showRequirements('sucesiones')">
+          <h3>👨‍👩‍👧‍👦 Sucesiones</h3>
+          <p>Tramitación de herencias y sucesiones intestadas.</p>
+          <span class="ver-requisitos">Ver requisitos →</span>
+        </div>
+        <div class="service-card" onclick="showRequirements('empresas')">
+          <h3>🏢 Constitución de Empresas</h3>
+          <p>Formación de sociedades y asociaciones.</p>
+          <span class="ver-requisitos">Ver requisitos →</span>
+        </div>
+        <div class="service-card" onclick="showRequirements('certificaciones')">
+          <h3>📋 Certificaciones</h3>
+          <p>Copias certificadas y legalizaciones.</p>
+          <span class="ver-requisitos">Ver requisitos →</span>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn active" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página de Requisitos -->
+    <div class="page" id="requirements">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('services')">←</button>
+        <h2 id="requirementsTitle">Requisitos</h2>
+      </div>
+      <div class="content">
+        <div id="requirementsContent"></div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página Área Legal -->
+    <div class="page" id="area-legal">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('home')">←</button>
+        <h2>⚖️ Área Legal</h2>
+      </div>
+      <div class="content">
+        <div class="team-member">
+          <h4>Dra. Martha De La Roca</h4>
+          <div class="member-info">
+            <a href="tel:+51932512048">📱 +51 932 512 048</a>
+            <a href="mailto:mdelaroca@notariaode.com"
+              >📧 mdelaroca@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Dra. Esthephany Gomez</h4>
+          <div class="member-info">
+            <a href="tel:+51989315612">📱 +51 989 315 612</a>
+            <a href="mailto:legal2@notariaode.com">📧 legal2@notariaode.com</a>
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Victor Ascencio</h4>
+          <div class="member-info">
+            <a href="tel:+51958136098">📱 +51 958 136 098</a>
+            <a href="mailto:registros@notariaode.com"
+              >📧 registros@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Fiorella Suarez de Freitas</h4>
+          <div class="member-info">
+            <a href="tel:+51989315609">📱 +51 989 315 609</a>
+            <a href="mailto:asistente7@notariaode.com"
+              >📧 asistente7@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Diego Montoya</h4>
+          <div class="member-info">
+            <a href="tel:+51989315609">📱 +51 989 315 609</a>
+            <a href="mailto:asistente8@notariaode.com"
+              >📧 asistente8@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Luz Maria</h4>
+          <div class="member-info">
+            <a href="tel:+51958136098">📱 +51 958 136 098</a>
+            <a href="mailto:asistente1@notariaode.com"
+              >📧 asistente1@notariaode.com</a
+            >
+          </div>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página Área Extra Protocolar -->
+    <div class="page" id="area-extra">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('home')">←</button>
+        <h2>📋 Área Extra Protocolar</h2>
+      </div>
+      <div class="content">
+        <div class="team-member">
+          <h4>Ruth Espinoza</h4>
+          <div class="member-info">
+            <a href="tel:+51989315614">📱 +51 989 315 614</a>
+            <a href="mailto:legalizaciones1@notariaode.com"
+              >📧 legalizaciones1@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Karime Salas</h4>
+          <div class="member-info">
+            <a href="tel:+51989315608">📱 +51 989 315 608</a>
+            <a href="mailto:legalizaciones2@notariaode.com"
+              >📧 legalizaciones2@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Nombre Responsable 3</h4>
+          <div class="member-info">
+            <a href="tel:+51999999999">📱 +51 999 999 999</a>
+            <a href="mailto:extra3@notariaode.com">📧 extra3@notariaode.com</a>
+          </div>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página Área de Escrituración -->
+    <div class="page" id="area-escritura">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('home')">←</button>
+        <h2>✍️ Área de Escrituración</h2>
+      </div>
+      <div class="content">
+        <div class="team-member">
+          <h4>Pilar Llaque</h4>
+          <div class="member-info">
+            <a href="tel:+51989315615">📱 +51 989 315 615</a>
+            <a href="mailto:asistente3@notariaode.com"
+              >📧 asistente3@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Bryan Quilcate</h4>
+          <div class="member-info">
+            <a href="tel:+51989315615">📱 +51 989 315 615</a>
+            <a href="mailto:asistente5@notariaode.com"
+              >📧 asistente5@notariaode.com</a
+            >
+          </div>
+        </div>
+
+        <div class="team-member">
+          <h4>Nombre Escriturador 3</h4>
+          <div class="member-info">
+            <a href="tel:+51999999999">📱 +51 999 999 999</a>
+            <a href="mailto:escritura3@notariaode.com"
+              >📧 escritura3@notariaode.com</a
+            >
+          </div>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página de Contacto -->
+    <div class="page" id="contact">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('home')">←</button>
+        <h2>Contacto</h2>
+      </div>
+      <div class="content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="icon">📞</span>
+            <div>
+              <h3>Teléfono</h3>
+              <a href="tel:+51989315617">+51 989 315 617</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon">📧</span>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:consultas@notariaode.com"
+                >consultas@notariaode.com</a
+              >
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="icon">🕐</span>
+            <div>
+              <h3>Horario de Atención</h3>
+              <p>Lunes a Viernes: 9:00 AM - 1:00 PM Y de 2:30 PM A 7:00 PM</p>
+              <p>Sábados: 9:00 AM - 1:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn active" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Página de Ubicación -->
+    <div class="page" id="location">
+      <div class="page-header">
+        <button class="btn-back" onclick="navigateTo('home')">←</button>
+        <h2>Ubicación</h2>
+      </div>
+      <div class="content">
+        <div class="location-info">
+          <h3>📍 Dirección</h3>
+          <p>Av. Nicolas de Pierola N° 265, Barranco<br />Lima, Perú</p>
+
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.576260325722!2d-77.02293569999999!3d-12.1411188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b7efd605b23f%3A0xcdb3b1cb85de5a0e!2sNotar%C3%ADa%20Sof%C3%ADa%20Ode%20Pereyra!5e0!3m2!1ses!2spe!4v1767334450208!5m2!1ses!2spe"
+              width="100%"
+              height="300"
+              style="border: 0; border-radius: 12px"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <a
+            href="https://www.google.com/maps/place/Notar%C3%ADa+Sof%C3%ADa+Ode+Pereyra/@-12.1411188,-77.0229357,17z/data=!3m1!4b1!4m6!3m5!1s0x9105b7efd605b23f:0xcdb3b1cb85de5a0e!8m2!3d-12.1411188!4d-77.0229357!16s%2Fg%2F11b7k0fbc9?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Ver en Google Maps
+          </a>
+        </div>
+      </div>
+      <nav class="bottom-nav">
+        <button class="nav-btn" data-page="home">
+          <span>🏠</span>
+          <span>Inicio</span>
+        </button>
+        <button class="nav-btn" data-page="services">
+          <span>📋</span>
+          <span>Servicios</span>
+        </button>
+        <button class="nav-btn" data-page="contact">
+          <span>📞</span>
+          <span>Contacto</span>
+        </button>
+        <button class="nav-btn active" data-page="location">
+          <span>📍</span>
+          <span>Ubicación</span>
+        </button>
+      </nav>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

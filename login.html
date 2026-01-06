@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Notaría Ode</title>
+    <link rel="stylesheet" href="login-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo-header">
+        <img src="imagenes/dra.jpg" alt="Logo Notaría Ode" class="logo" />
+        <h1>Notaría Sofia Ode</h1>
+        <p>Notaria Sofia Ode Pereyra</p>
+      </div>
+
+      <!-- Formulario de Login -->
+      <div class="form-container" id="loginForm">
+        <h2>Iniciar Sesión</h2>
+        <form onsubmit="handleLogin(event)">
+          <div class="input-group">
+            <label>📧 Email</label>
+            <input
+              type="email"
+              id="loginEmail"
+              required
+              placeholder="tu@email.com"
+            />
+          </div>
+          <div class="input-group">
+            <label>🔒 Contraseña</label>
+            <input
+              type="password"
+              id="loginPassword"
+              required
+              placeholder="••••••••"
+            />
+          </div>
+          <button type="submit" class="btn-primary">Ingresar</button>
+          <p class="switch-form">
+            ¿No tienes cuenta?
+            <a href="#" onclick="showRegister(); return false;"
+              >Regístrate aquí</a
+            >
+          </p>
+        </form>
+      </div>
+
+      <!-- Formulario de Registro -->
+      <div class="form-container hidden" id="registerForm">
+        <h2>Crear Cuenta</h2>
+        <form onsubmit="handleRegister(event)">
+          <div class="input-group">
+            <label>👤 Nombre Completo</label>
+            <input
+              type="text"
+              id="registerName"
+              required
+              placeholder="Juan Pérez"
+            />
+          </div>
+          <div class="input-group">
+            <label>📧 Email</label>
+            <input
+              type="email"
+              id="registerEmail"
+              required
+              placeholder="tu@email.com"
+            />
+          </div>
+          <div class="input-group">
+            <label>📱 Teléfono</label>
+            <input
+              type="tel"
+              id="registerPhone"
+              required
+              placeholder="+51 999 999 999"
+            />
+          </div>
+          <div class="input-group">
+            <label>🔒 Contraseña</label>
+            <input
+              type="password"
+              id="registerPassword"
+              required
+              placeholder="••••••••"
+              minlength="6"
+            />
+          </div>
+          <button type="submit" class="btn-primary">Registrarse</button>
+          <p class="switch-form">
+            ¿Ya tienes cuenta?
+            <a href="#" onclick="showLogin(); return false;"
+              >Inicia sesión aquí</a
+            >
+          </p>
+        </form>
+      </div>
+
+      <!-- Mensaje de carga -->
+      <div class="loading hidden" id="loading">
+        <div class="spinner"></div>
+        <p>Procesando...</p>
+      </div>
+    </div>
+
+    <script src="login-script.js"></script>
+  </body>
+</html>
